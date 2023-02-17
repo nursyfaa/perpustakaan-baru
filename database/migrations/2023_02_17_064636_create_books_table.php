@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('siswa', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->char('nis', 10);
-            $table->string('namalengkap', 100);
-            $table->enum('jk', ['L', 'P']);
-            $table->string('kelas', 15);
-            $table->string('nowa', 15);
-            $table->string('email', 50);
+            $table->string('name_book', 100);
+            $table->text('summary');
+            $table->string('publisher', 100);
+            $table->unsignedBigInteger('pages');
+            $table->unsignedBigInteger('qty');
+            $table->date('date_release');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('siswa');
+        Schema::dropIfExists('books');
     }
 };

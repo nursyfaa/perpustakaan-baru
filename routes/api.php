@@ -1,23 +1,23 @@
 <?php
 
-use App\Http\Controllers\AuthC;
 use Illuminate\Http\Request;
-use App\Http\Controllers\PostC;
+use App\Http\Controllers\AuthC;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostC;
+use App\Http\Controllers\BookC;
 
-
-Route::get('/', function(){
+route::get('/', function(){
     return 'Hello World API !';
 });
-Route::get('/posts',[PostC::class,'index'])->middleware(['auth:sanctum']);
-Route::get('/posts/{id}',[PostC::class,'detail'])->middleware(['auth:sanctum']);
+route::get('/posts',[PostC::class,'index'])->middleware(['auth:sanctum']);
+route::get('/posts/{id}',[PostC::class,'detail'])->middleware(['auth:sanctum']);
 
-Route::post('/login',[AuthC::class, 'login']);
+route::post('/login',[AuthC::class,'login']);
 
-Route::get('/password', function (){
+route::get('/password',function(){
     return Hash::make('rahasia');
-
 });
 
-
+route::get('/books',[BookC::class,'index']);
+route::get('/books/{id}',[BookC::class,'detail']);
